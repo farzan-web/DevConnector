@@ -92,7 +92,7 @@ router.post('/', [auth, [
                 return res.json(profile);
             }
 
-            // Create
+            // Create 
             profile = new Profile(profileFields);
 
             await profile.save();
@@ -311,7 +311,7 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
 // @route   GET api/profile/github/:username
 // @desc    Get user repos from Github
 // @access  Public
-router.get('/github/:username', async (req, res) => {
+router.get('/github/:username', (req, res) => {
     try {
         const options = {
             uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
